@@ -1,12 +1,11 @@
 import sys
-v,e = map(int,sys.stdin.readline().split())
-p = [tuple(map(int,sys.stdin.readline().split())) for _ in range(e)]
 
-p.sort(key=lambda x : x[2])
-# print(p)
+n,m = map(int,sys.stdin.readline().split())
+p = [tuple(map(int,sys.stdin.readline().split())) for _ in range(m)]
+# p.sort()
 
-parent = [i for i in range(v+1)]
-sum = 0
+parent = [i for i in range(n+1)]
+
 #union find - 부모노드를 찾는 함수
 def getParent(x) :
     if parent[x] == x : return x
@@ -24,13 +23,20 @@ def unionParent(a,b) :
 def findParent(a,b) :
     a = getParent(a)
     b = getParent(b)
-    if a == b : return 0 #같은 부모를 가지고있다. 즉 연결된 노드이다. 
+    if a == b : return 0
     return 1
 
 for i in p :
     if findParent(i[0],i[1]) != 0:
-        unionParent(i[0],i[1]) #정렬, 양방향 적용 필요옶음. 왜?? 연결만 되면 되서??
-        sum += i[2]
-# print(parent)
-print(sum)
-    
+        unionParent(i[0],i[1])
+        # unionParent(i[1],i[0]) 이거,,,,,,,,,,,,왜악
+
+result = []
+for a in parent :
+    result.append(getParent(a))
+
+
+print(result)
+print(set(result))
+
+print(len(set(result))-1)
