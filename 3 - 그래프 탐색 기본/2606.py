@@ -13,7 +13,7 @@ for _ in range(line) :
 count = 0
 def dfs(v,seen):# 연결된 인데스 까지만 돔
     seen[v] = True 
-    # print(v,end=' ')
+    print(v,end=' ')
     global count
     count += 1
     for i in graph[v] :
@@ -22,4 +22,5 @@ def dfs(v,seen):# 연결된 인데스 까지만 돔
 
 seen = [False] * (computer+1)
 dfs(1,seen)
+print()
 print(count-1) #1번빼고

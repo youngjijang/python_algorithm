@@ -6,14 +6,14 @@ p = [list(map(int,sys.stdin.readline().split())) for _ in range(m)]
 graph = [[] for _ in range(n+1)] # 빈 배열 초기화 가능?
 
 # make adjacency list
-for i in p:
+for i in p: #그래프를 인접리스트로 표현하기
     graph[i[0]].append(i[1])
-    graph[i[1]].append(i[0])
+    graph[i[1]].append(i[0]) #양방향 그래프????
 # sort adjacency list
 for i in range(1, n+1):
-    graph[i].sort()
+    graph[i].sort() #노드가 작은 > 큰 순으로 가기위해 정렬
 
-
+#recursive dfs
 def dfs(v,seen):
     seen[v] = True # 담는거 보다 인덱스로 표현하는게 찾을때 더 빨라서?
     print(v,end=' ')
