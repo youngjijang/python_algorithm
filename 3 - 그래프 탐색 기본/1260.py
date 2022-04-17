@@ -28,7 +28,7 @@ def bfs(v,seen):
     while queue :
         v = queue.popleft()
         print(v,end=' ')
-        for i in graph[v] :
+        for i in graph[v] : #해당 노드와 연결된 노드
             if not seen[i] :
                 queue.append(i)
                 seen[i] = True

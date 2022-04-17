@@ -1,5 +1,6 @@
 import sys
 
+
 def check(v,graph) : # 정점개수 / 간선개수 / 리스트 
     # print(p)
     result = [0] * (v+1)
@@ -8,7 +9,8 @@ def check(v,graph) : # 정점개수 / 간선개수 / 리스트
         for i in graph[n] :
             if result[i] == 0 :
                 if result[n] == 1 : result[i] = 2
-                else : result[i] = 1                       
+                else : result[i] = 1    
+                dfs(i,result)                   
             else :
                 if result[i] == result[n] :
                     return False
@@ -17,7 +19,7 @@ def check(v,graph) : # 정점개수 / 간선개수 / 리스트
     # a = True
     for i in range(1,v+1) :
         a = dfs(i,result)
-        print(result)
+        # print(result)
         if a == False : return False
     return True
         
