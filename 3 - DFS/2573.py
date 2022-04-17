@@ -5,4 +5,5 @@ c_ice = [[0]*(m) for _ in range(n)]
 
 for i in range(n) :
     for j in range(m) :
-        if ice[]
+        if ice[i][j] != 0 :
+            pass
