@@ -36,6 +36,6 @@ for i in range(n) :
     else : 
         if not seen[i+1] : #!!!!!!!!!!!!!!!!!!왜--
             r =  dfs(i+1)
-            count += r*(r-1)
+            count += r*(r-1) #조합공식?
 
 print(count)

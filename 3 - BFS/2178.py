@@ -11,7 +11,8 @@ dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1] #방향
 count = 0
 
 queue = [[0,0]]
-seen[0][0] = 1
+seen[0][0] = 1  # 거리를 계산하여 저장가능
+
 
 while queue :
     x,y = queue.pop(0)
