@@ -1,55 +1,34 @@
+import heapq
 import sys
 
 n = int(sys.stdin.readline())
-l = [list(sys.stdin.readline().strip()) for _ in range(n)]
+miro = [list(sys.stdin.readline()) for _ in range(n)]
+# 검은방-0 흰방-1
 
+# 다익스트라
 
-# visited = [[0]*n for _ in range(n)]
 dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1] #방향
+visited = [[0]*n for _ in range(n)]
 
-##########스택
-stack = []
-def dfs(x,y) :
-    count = 1
-    while stack :
-        x,y = stack.pop()
-        l[x][y] = '0'
+def dijkstra(x,y) :
+    hq = []
+    heapq.heappush(hq,(0,x,y))
+    visited[x][y] = 1
+    while hq :
+        cur = heapq.heappop(hq)
+        if cur[1] == n-1 and cur[2] == n-1 :
+            return cur[0]
         for i in range(4) :
-            xx = x + dx[i]
-            yy = y + dy[i]
-            if 0 <= xx < n and 0 <= yy < n and l[xx][yy] == '1' :
-                l[xx][yy] = '0'
-                stack.append((xx,yy))
-                count += 1
-    return count 
-
-###########재귀
-def recursive(x,y,count) :
-    l[x][y] = '0'
-    count += 1
-    for i in range(4) :
-        xx = x + dx[i]
-        yy = y + dy[i]
-        if 0 <= xx < n and 0 <= yy < n and l[xx][yy] == '1' :
-            count = recursive(xx,yy,count)
-    return count
+            xx = cur[1] + dx[i]
+            yy = cur[2] + dy[i]
+            if 0 <= xx < n and 0 <= yy <n and visited[xx][yy] == 0:
+                if miro[xx][yy] == '1' :
+                    visited[xx][yy] = 1
+                    heapq.heappush(hq,(cur[0],xx,yy))
+                elif miro[xx][yy] == '0' :
+                    visited[xx][yy] = 1
+                    heapq.heappush(hq,(cur[0]+1,xx,yy))
 
 
-num = []
-count = 0
-# print(l)
-# print(visited)
-for i in range(n) :
-    for j in range(n) :
-        if l[i][j] == '1' :# and not visited[i][j] :
-            # stack.append((i,j))
-            num.append(recursive(i,j,0))
-            count += 1
-
-print(count)
-num.sort()
-for i in num :
-    print(i)
-
-
+print(dijkstra(0,0))
 
