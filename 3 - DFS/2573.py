@@ -1,44 +1,54 @@
-
 import sys
+
 n,m = map(int,sys.stdin.readline().split())
 ice = [list(map(int,sys.stdin.readline().split())) for _ in range(n)]
-c_ice = [[0]*(m) for _ in range(n)]
 
-seen = [[0]*m for _ in range(n) ]
 dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1] #방향
 
 
+def melt(a,b) :
+    changed = []
+    stack =[(a,b)]
+    visited[a][b] = True
 
-# stack = [[0,0]]
-# seen[0][0] = 1
-# while stack : 
-#     x,y = stack.pop()
-#     for i in range(4) :
-#         nx = x + dx[i]
-#         ny = y + dy[i]
-#         if  0 <= nx < n and 0 <= ny < m:
-#             if seen[nx][ny] == 0 and ice[nx][ny] == 0 :
-#                 seen[nx][ny] = 1
-#                 c_ice
-#                 stack.append((nx,ny))
-def dfs(x,y) :
-    pass
+    while stack :
+        x,y = stack.pop()
+        # print(x,y)
+        for i in range(4) :
+            xx = x +dx[i]
+            yy = y +dy[i]
+            if 0 <= xx < n and 0<=yy< m:
+                if ice[xx][yy] == 0 :
+                    changed.append([x,y])
+                    # print(changed)
+                elif ice[xx][yy] > 0 and visited[xx][yy] == False:
+                    visited[xx][yy] =True
+                    stack.append((xx,yy))
 
+    for i in changed :
+        if ice[i[0]][i[1]] > 0 :
+            ice[i[0]][i[1]] -= 1
+    # return changed
 
+   
+year = 0
+# melt(1,1)
 
-count = 0
-for i in range(n) :
-    for j in range(m) :
-        if ice[i][j] != 0 and seen[i][j] == 0:
-            seen[i][j] = 1
-            stack = [[i,j]]
-            dfs(i,j)
-            count += 1
-        if count >= 2 : 
-            print()
-            exit(0)
+while 1 :
+    visited = [[False]*(m) for _ in range(n) ]
+    count = 0
+    year += 1
+    for i in range(n) :
+        for j in range(m) :
+            if ice[i][j] != 0 and visited[i][j] == False :
+                melt(i,j)
+                count += 1
 
-if count == 0 :
-    print(0)
-            
+    # print(changed)
+    # print(count,ice)
+    if count >= 2 : break
+    if count == 0 : 
+        year = 1
+        break
 
+print(year-1)
