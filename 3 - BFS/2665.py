@@ -15,7 +15,7 @@ def dijkstra(x,y) :
     heapq.heappush(hq,(0,x,y))
     visited[x][y] = 1
     while hq :
-        cur = heapq.heappop(hq)
+        cur = heapq.heappop(hq) # 우선순위가 같을 경우는 누가먼저??? 어떤지 모르겠지만 일단 최단 거리만 구하는거라 무상관
         if cur[1] == n-1 and cur[2] == n-1 :
             return cur[0]
         for i in range(4) :
