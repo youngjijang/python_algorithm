@@ -1,3 +1,5 @@
+# 시간초과
+
 import sys
 
 n = int(sys.stdin.readline())

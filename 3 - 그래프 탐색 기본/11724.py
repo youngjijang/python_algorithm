@@ -2,7 +2,6 @@ import sys
 
 n,m = map(int,sys.stdin.readline().split())
 p = [tuple(map(int,sys.stdin.readline().split())) for _ in range(m)]
-# p.sort()
 
 parent = [i for i in range(n+1)]
 
@@ -29,14 +28,14 @@ def findParent(a,b) :
 for i in p :
     if findParent(i[0],i[1]) != 0:
         unionParent(i[0],i[1])
-        # unionParent(i[1],i[0]) 이거,,,,,,,,,,,,왜악
 
-result = []
+result = [] # 각 노드에 루트노드를 구해여 저장한다. 
 for a in parent :
-    result.append(getParent(a))
+    result.append(getParent(a)) 
 
 
 print(result)
-print(set(result))
+print(set(result)) 
+# 루트 노드에 중복을 제거하여 총 몇개의 루트가 남아있나 확인함으로 사이클의 개수를 알수있다. 
 
 print(len(set(result))-1)

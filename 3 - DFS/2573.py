@@ -3,7 +3,7 @@ import sys
 n,m = map(int,sys.stdin.readline().split())
 ice = [list(map(int,sys.stdin.readline().split())) for _ in range(n)]
 
-dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1] #방향
+dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1] #방향 !!!!!!!!!!!!!!
 
 
 def melt(a,b) :
