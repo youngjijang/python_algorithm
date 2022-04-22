@@ -1,4 +1,6 @@
+from collections import deque
 import heapq
+import queue
 import sys
 
 n = int(sys.stdin.readline())
@@ -22,13 +24,15 @@ def dijkstra(x,y) :
             xx = cur[1] + dx[i]
             yy = cur[2] + dy[i]
             if 0 <= xx < n and 0 <= yy <n and visited[xx][yy] == 0:
-                if miro[xx][yy] == '1' :
+                if miro[xx][yy] == '1' : #흰방
                     visited[xx][yy] = 1
-                    heapq.heappush(hq,(cur[0],xx,yy))
-                elif miro[xx][yy] == '0' :
+                    heapq.heappush(hq,(cur[0],xx,yy)) #흰방은 노카운트
+                elif miro[xx][yy] == '0' : #검은방
                     visited[xx][yy] = 1
-                    heapq.heappush(hq,(cur[0]+1,xx,yy))
+                    heapq.heappush(hq,(cur[0]+1,xx,yy)) #
 
 
 print(dijkstra(0,0))
 
+a = deque()
+a.append
