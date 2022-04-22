@@ -3,7 +3,7 @@ import sys
 
 n = int(sys.stdin.readline())
 
-####시간 초과######3
+####시간 초과######3걍 재귀함수 ,dp  XX
 def fib (n) :
     array = [0,1]
     if len(array) > n :
