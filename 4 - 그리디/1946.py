@@ -6,38 +6,22 @@ for _ in range(t) :
     n = int(sys.stdin.readline())
     p = [list(map(int,sys.stdin.readline().split())) for _ in range(n)]
 
-    # for i in range(n) :
-    #     if p[i][0] == 1 :
-    #         one = p[i][1]
-    #         print(one)
-    #     if p[i][1] == 1 :
-    #         two = p[i][0]
-    #         print(two)
-    # count = 0
-    # for i in range(n) :
-    #     temp = p[i]
-    #     if one >= temp[1] and two >= temp[0] :
-    #         print(temp)
-    #         count += 1
-    # print(count)
-
     p.sort()
-    
-    result = []
-    result.append(p[0])
+    # result = [True] * n
+    # for i in range(n-1) :
+    #     if result[i] == True :
+    #         for j in range(i+1,n) :
+    #             if p[i][1] < p[j][1] :
+    #                 result[j] = False
+
+    # print(result.count(True))
+
+    #for문 돌리면 당연시간초과ㅠㅜㅜㅜㅜ
+    #비교 대상만 temp에 담고 업데이트해 나아가기....중요중요
+    count = 1
+    temp = p[0][1]
     for i in range(1,n) :
-        if p[i][1] < p[0][1] :
-            result.append(p[i])
-    
-    print(result)
-
-    result.sort(key= lambda x : x[1])
-
-    result2 = []
-    result2.append(result[0])
-    for i in range(1,len(result)) :
-        if result[i][0] < result[0][0] :
-            result2.append(result[i])
-
-    print(result2)
-    print(len(result2))
+        if p[i][1] < temp :
+            count += 1
+            temp = p[i][1]
+    print(count)
