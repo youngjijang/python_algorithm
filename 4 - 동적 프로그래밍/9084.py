@@ -14,7 +14,15 @@ for _ in range(T) :
         dp[j] += 1
         for i in range(1,m+1) :
             if i - j > 0 : #목표 동전 - 동전 종류
-                dp[i] += dp[i-j]
+                dp[i] += dp[i-j] # 동전의 수가 아니라 방법의 수!!!!
 
     print(dp[m])
     
+
+# dp = [0]*(m+1)
+# dp[0] = 1 # 반복문에 자기자신도 걸리게 하려고 그냥 세팅
+
+# for j in a : #동전 종류
+#     for i in range(m+1) : # 목표 금액 
+#         if i >= j :
+#             dp[i] = dp[i]+dp[i-j]
