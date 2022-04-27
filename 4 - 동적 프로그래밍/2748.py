@@ -41,4 +41,16 @@ def fib4(n) :
     ratio = (1+root5)/2
     return int((pow(ratio,n) - pow(1-ratio,n))/root5)
 
-print(fib2(n))
+# print(fib(n))
+
+from functools import cache
+
+@cache
+def fib (n) :
+    if n <= 2 :
+        return 1
+    else :
+        result = fib(n-1) + fib(n-2)
+        return result
+
+print(fib(n))
