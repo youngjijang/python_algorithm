@@ -1,1 +1,1 @@
-# jungle_algorithm
+# python_algorithm
