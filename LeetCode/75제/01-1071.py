@@ -53,10 +53,10 @@ class Solution:
 
 def gcdOfStrings(self, str1: str, str2: str) -> str:
         if not str1 or not str2:
-            return str1 if str1 else str2
+            return str1 if str1 else str2 # 동일한 부분을 계속 잘라내고 마지막 남은 문자열 반환!!!
         elif len(str1) < len(str2):
-            return self.gcdOfStrings(str2, str1)
-        elif str1[: len(str2)] == str2:
-            return self.gcdOfStrings(str1[len(str2) :], str2)
+            return self.gcdOfStrings(str2, str1) # lengh가 긴 문자를 앞으로 하여 검증
+        elif str1[: len(str2)] == str2: # 짧은 문자열을 기준으로 동일한 문자인지 파악하여 동일하지 않으면 false return
+            return self.gcdOfStrings(str1[len(str2) :], str2) # 동일하다면 동일한 부분을 잘라서 재 비교
         else:
             return ''
