@@ -13,7 +13,7 @@ class Solution:
                     return True
         return False
 
-###### O(1)
+### 
 class Solution:
     def increasingTriplet(self, nums: list[int]) -> bool:
         
